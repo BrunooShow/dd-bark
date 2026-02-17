@@ -1,0 +1,7 @@
+{
+  "name": "dd-bark",
+  "description": "Datadog observability toolkit for Claude Code — query logs, metrics, traces, monitors, incidents, and more directly from your editor.",
+  "author": "show",
+  "version": "1.0.0",
+  "homepage": "https://github.com/show/datadog-cli"
+}
