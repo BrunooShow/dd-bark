@@ -1,0 +1,17 @@
+{
+  "name": "dd-bark",
+  "owner": { "name": "BrunooShow" },
+  "plugins": [
+    {
+      "name": "dd-bark",
+      "source": "./",
+      "description": "Datadog observability toolkit for Claude Code — query logs, metrics, traces, monitors, incidents, and more directly from your editor.",
+      "version": "1.0.0",
+      "author": { "name": "BrunooShow" },
+      "homepage": "https://github.com/BrunooShow/dd-bark",
+      "repository": "https://github.com/BrunooShow/dd-bark",
+      "license": "MIT",
+      "keywords": ["datadog", "observability", "monitoring", "logs", "apm"]
+    }
+  ]
+}

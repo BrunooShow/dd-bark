@@ -8,19 +8,11 @@ All output is JSON to stdout, making it easy to pipe into other tools or consume
 
 dd-bark is available as a [Claude Code](https://claude.ai/code) plugin.
 
-### Install from marketplace
-
-```
-/plugin install dd-bark@<marketplace-name>
-```
-
 ### Install from GitHub
-
-Add the repo as a marketplace source, then install:
 
 ```
 /plugin marketplace add BrunooShow/dd-bark
-/plugin install dd-bark@dd-bark
+/plugin install dd-bark
 ```
 
 ### Local development
