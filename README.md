@@ -4,6 +4,41 @@ CLI tool for interacting with the Datadog API — designed for AI agent usage.
 
 All output is JSON to stdout, making it easy to pipe into other tools or consume programmatically.
 
+## Claude Code Plugin
+
+dd-bark is available as a [Claude Code](https://claude.ai/code) plugin.
+
+### Install from marketplace
+
+```
+/plugin install dd-bark@<marketplace-name>
+```
+
+### Install from GitHub
+
+Add the repo as a marketplace source, then install:
+
+```
+/plugin marketplace add BrunooShow/dd-bark
+/plugin install dd-bark@dd-bark
+```
+
+### Local development
+
+```bash
+claude --plugin-dir /path/to/dd-bark
+```
+
+### What you get
+
+| Command | Description |
+|---|---|
+| `/dd <service>` | Quick health check — monitors, errors, incidents |
+| `/dd-investigate <service>` | Deep on-call investigation with root cause analysis |
+| `/dd-report <service>` | Structured observability report for standups/reviews |
+
+Plus an auto-triggered skill that activates whenever you mention Datadog, logs, monitors, traces, etc.
+
 ## Install
 
 ```bash
