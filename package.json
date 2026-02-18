@@ -23,6 +23,23 @@
     "tsup": "^8.4.0",
     "typescript": "^5.8.3"
   },
+  "keywords": [
+    "datadog",
+    "cli",
+    "observability",
+    "monitoring",
+    "ai-agent"
+  ],
+  "author": "BrunooShow",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrunooShow/dd-bark.git"
+  },
+  "homepage": "https://github.com/BrunooShow/dd-bark#readme",
+  "bugs": {
+    "url": "https://github.com/BrunooShow/dd-bark/issues"
+  },
   "engines": {
     "node": ">=20"
   }
