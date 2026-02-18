@@ -28,6 +28,10 @@ claude --plugin-dir /path/to/dd-bark
 | `/dd <service>` | Quick health check — monitors, errors, incidents |
 | `/dd-investigate <service>` | Deep on-call investigation with root cause analysis |
 | `/dd-report <service>` | Structured observability report for standups/reviews |
+| `/dd-audit` | Multi-service health sweep — parallel checks across all services |
+| `/dd-post-deploy <service>` | Post-deploy verification — compares pre/post error rates |
+| `/dd-correlate <service>` | Incident signal correlation — unified timeline from all signals |
+| `/bark:hop-investigate <svc> <playbook>` | Run a reusable investigation playbook |
 
 Plus an auto-triggered skill that activates whenever you mention Datadog, logs, monitors, traces, etc.
 
@@ -193,4 +197,77 @@ dd-bark get-rum-events --query="@type:error" --limit=50
 dd-bark get-rum-grouped-event-count --groupBy="@browser.name"
 dd-bark get-rum-page-performance --query="@application.name:myapp"
 dd-bark get-rum-page-waterfall --applicationName="myapp" --sessionId="sess-123"
+```
+
+## Agentic Workflows
+
+dd-bark includes a layered agentic system for automating observability tasks with Claude Code.
+
+### Quick Start with Justfile
+
+If you have [just](https://github.com/casey/just) installed, all workflows are available as one-liners:
+
+```bash
+just                           # list all recipes
+just bark payment-service      # quick health check
+just bark-investigate auth-svc # deep investigation
+just bark-audit                # multi-service health sweep
+just bark-deploy api-gateway   # post-deploy verification
+just bark-correlate web-app    # incident signal correlation
+just bark-playbook api high-error-rate  # run investigation playbook
+```
+
+### Agents
+
+Lightweight agents designed for parallel fan-out:
+
+| Agent | Purpose |
+|---|---|
+| `@sre-investigator` | Deep cross-service investigation (6-phase playbook) |
+| `@service-checker` | Fast HEALTHY/DEGRADED/CRITICAL check for one service |
+| `@metric-analyzer` | Metric trend analysis — CPU, memory, latency, error rate |
+| `@deploy-verifier` | Pre/post deploy comparison with PASS/FAIL checks |
+
+### Investigation Playbooks
+
+Reusable investigation templates in `playbooks/`. Run via the HOP pattern:
+
+```bash
+# Run a playbook against a service
+just bark-playbook payment-service high-error-rate
+
+# List available playbooks
+just bark-playbooks
+```
+
+Available playbooks:
+- `high-error-rate` — categorize errors, trace the path, check triggers
+- `high-latency` — measure latency, identify slow ops, check resources
+- `service-degradation` — full signal sweep, classify type, build timeline
+
+Add your own by creating a `.md` file in `playbooks/` with `{SERVICE}` placeholders.
+
+### Service Config
+
+Define your services in `ai_review/services.yaml` for the multi-service audit:
+
+```yaml
+services:
+  - name: api-gateway
+    critical: true
+    monitors: ["api-gateway-*"]
+  - name: auth-service
+    critical: true
+```
+
+### Composed Workflows
+
+Higher-level recipes that chain multiple commands:
+
+```bash
+just bark-standup              # morning audit of all services
+just bark-oncall api-gateway   # correlate signals → investigate root cause
+just bark-shipit web-app       # verify deploy → auto-investigate if FAIL
+just bark-deepdive auth-svc    # metrics + investigation + report combined
+just bark-escalate payment-svc # cross-service investigation with SRE agent
 ```

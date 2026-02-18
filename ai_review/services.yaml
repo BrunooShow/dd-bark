@@ -1,0 +1,34 @@
+# Service definitions for dd-audit multi-service health sweep
+# Customize this file with your actual services
+#
+# Fields:
+#   name (required)    — service name as it appears in Datadog
+#   critical (optional) — if true, flagged prominently when unhealthy
+#   monitors (optional) — monitor name patterns to check specifically
+#   tags (optional)     — additional context tags
+
+services:
+  # --- Example services (replace with your own) ---
+
+  - name: api-gateway
+    critical: true
+    monitors: ["api-gateway-*"]
+    tags: ["team:platform", "env:production"]
+
+  - name: auth-service
+    critical: true
+    monitors: ["auth-*"]
+    tags: ["team:identity", "env:production"]
+
+  - name: payment-service
+    critical: true
+    monitors: ["payment-*", "stripe-*"]
+    tags: ["team:payments", "env:production"]
+
+  - name: notification-service
+    critical: false
+    tags: ["team:comms", "env:production"]
+
+  - name: search-service
+    critical: false
+    tags: ["team:search", "env:production"]
