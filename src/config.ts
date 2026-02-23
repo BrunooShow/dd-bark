@@ -73,4 +73,49 @@ export const api = {
   get rum() {
     return new v2.RUMApi(getConfig())
   },
+  get events() {
+    return new v2.EventsApi(getConfig())
+  },
+  get slos() {
+    return new v1.ServiceLevelObjectivesApi(getConfig())
+  },
+  get synthetics() {
+    return new v1.SyntheticsApi(getConfig())
+  },
+  get errorTracking() {
+    return new v2.ErrorTrackingApi(getConfig())
+  },
+  get onCall() {
+    return new v2.OnCallApi(getConfig())
+  },
+  get serviceCatalog() {
+    return new v2.ServiceDefinitionApi(getConfig())
+  },
+  get containers() {
+    return new v2.ContainersApi(getConfig())
+  },
+  get processes() {
+    return new v2.ProcessesApi(getConfig())
+  },
+  get tags() {
+    return new v1.TagsApi(getConfig())
+  },
+  get ciPipelines() {
+    return new v2.CIVisibilityPipelinesApi(getConfig())
+  },
+  get doraMetrics() {
+    return new v2.DORAMetricsApi(getConfig())
+  },
+  get audit() {
+    return new v2.AuditApi(getConfig())
+  },
+  get securityMonitoring() {
+    return new v2.SecurityMonitoringApi(getConfig())
+  },
+  get scorecards() {
+    return new v2.ServiceScorecardsApi(getConfig())
+  },
+  get notebooks() {
+    return new v1.NotebooksApi(getConfig())
+  },
 }
