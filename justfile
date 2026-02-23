@@ -56,6 +56,10 @@ bark-deploy service=default_service deploy_time="":
 bark-correlate service=default_service:
     claude "/dd-correlate {{service}}"
 
+# SLO breach investigation (with optional --deep for code fix proposals)
+bark-slo service=default_service deep="":
+    claude "/dd-slo-investigate {{service}} {{deep}}"
+
 # ─── Layer 3.5: HOP (Higher-Order Prompts) ───────────────────
 
 # Run an investigation playbook against a service
@@ -87,3 +91,7 @@ bark-deepdive service=default_service:
 # Run playbook with SRE agent for complex cross-service issues
 bark-escalate service=default_service playbook="service-degradation":
     claude "/bark:hop-investigate {{service}} {{playbook}} sre"
+
+# SLO-driven investigation — check SLOs, investigate breaches, cross-ref code
+bark-slo-deep service=default_service:
+    claude "/dd-slo-investigate {{service}} --deep"
